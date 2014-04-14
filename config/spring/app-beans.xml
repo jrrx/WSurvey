@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:task="http://www.springframework.org/schema/task"
+
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd    
+	    http://www.springframework.org/schema/context 
+	    http://www.springframework.org/schema/context/spring-context-3.2.xsd    
+	    http://www.springframework.org/schema/mvc 
+	    http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd    
+	    http://www.springframework.org/schema/util 
+	    http://www.springframework.org/schema/util/spring-util-3.2.xsd
+	    http://www.springframework.org/schema/tx 
+	    http://www.springframework.org/schema/tx/spring-tx-3.2.xsd 
+		http://www.springframework.org/schema/aop  
+		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd">
+
+	<!-- 配置通过注解，把一个URL映射到Controller类上 -->
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+	</bean>
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
+
+	<!-- 扫描指定的包中的类上的注解 -->
+	<context:component-scan base-package="com.voyage" />
+	<!-- 定时任务扫描器注解 -->
+	<task:annotation-driven />
+	
+	
+	
+
+	<!-- 将指定URL 的匹配模式来访问静态文件 -->
+	<!--mvc:resources mapping="/resources/**" location="classpath:/resources/" 
+		cache-period="0" / -->
+
+	<!-- 将指定路径的请求直接转到对应的view上，而不需要特定的controller来处理请求 -->
+	<!--mvc:view-controller path="/" view-name="welcome" / -->
+
+
+</beans>

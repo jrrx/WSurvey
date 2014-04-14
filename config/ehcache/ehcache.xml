@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="ehcache.xsd" updateCheck="true"
+	monitoring="autodetect" dynamicConfig="true">
+
+	<!-- 最多一千份问卷在使用，该缓存服务器启动后不超时 -->
+	<cache name="paperCache" diskPersistent="false"
+		maxElementsInMemory="1000" eternal="true" overflowToDisk="false"
+		memoryStoreEvictionPolicy="LFU">
+	</cache>
+
+	<!-- 用户状态缓存，和数据库中的状态对应 -->
+	<cache name="surveyStatusCache" diskPersistent="false"
+		maxElementsInMemory="1000" eternal="true" overflowToDisk="false"
+		memoryStoreEvictionPolicy="LFU">
+	</cache>
+
+	<!-- 用户状态缓存，和数据库中的状态对应 -->
+	<cache name="userSceneIdCache" diskPersistent="false"
+		maxElementsInMemory="9000" eternal="true" overflowToDisk="false"
+		memoryStoreEvictionPolicy="LFU">
+	</cache>
+
+
+</ehcache>

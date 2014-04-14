@@ -1,6 +1,6 @@
 src/com/voyage/util/Consts.java
 src/resources/properties/*
 src/resources/temp/*
-config/*
+config/datasource.properties
 WebContent/WEB-INF/lib
 WebContent/WEB-INF/classes
