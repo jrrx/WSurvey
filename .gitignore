@@ -1,0 +1,4 @@
+src/com/voyage/util/Consts.java
+config/*
+WebContent/WEB-INF/lib
+WebContent/WEB-INF/classes
