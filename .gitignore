@@ -1,4 +1,5 @@
 src/com/voyage/util/Consts.java
+src/resources/properties/*
 config/*
 WebContent/WEB-INF/lib
 WebContent/WEB-INF/classes
