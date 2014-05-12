@@ -36,6 +36,7 @@ CREATE TABLE `t_result` (
   `fanid` int(11) DEFAULT NULL,
   `questionpos` int(11) DEFAULT NULL,
   `answertext` varchar(128) DEFAULT NULL,
+  `answertime` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

@@ -1,5 +1,6 @@
 package com.voyage.task;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Component;
 
 import com.voyage.core.SurveyStatus;
 import com.voyage.util.LogUtil;
+import com.voyage.util.Utils;
 
 @Component
 public class ResultStoreJob {
@@ -49,6 +51,8 @@ public class ResultStoreJob {
 			if (temp != null && temp.size() > 0) {
 				
 				LogUtil.GlobalLog.info("Result size is:"+ temp.size());
+				Timestamp curTime = Utils.getInstance().getCurrentTime();
+				
 				
 				for (SurveyStatus surveyStatus : temp) {
 					// 删除已有的答案
@@ -57,8 +61,8 @@ public class ResultStoreJob {
 							surveyStatus.getUserOpenId());
 
 					// 存储用户回答的答案
-					String insertsql = "insert into t_result (paperid, useropenid, questionpos, answertext) values (?,?,?,?)";
-
+					String insertsql = "insert into t_result (paperid, useropenid, questionpos, answertext, answertime) values (?,?,?,?,?)";
+					
 					List<Object[]> args = new ArrayList<Object[]>();
 					Map<Integer, String> replies = surveyStatus.getReplies();
 					Set<Entry<Integer, String>> ents = replies.entrySet();
@@ -66,11 +70,12 @@ public class ResultStoreJob {
 						Integer pos = ent.getKey();
 						String reply = ent.getValue();
 
-						Object[] arg = new Object[4];
+						Object[] arg = new Object[5];
 						arg[0] = surveyStatus.getPaperId();
 						arg[1] = surveyStatus.getUserOpenId();
 						arg[2] = pos;
 						arg[3] = reply;
+						arg[4] = curTime;
 
 						// for (Object obj : arg) {
 						// LogUtil.GlobalLog.info("The args is:" + obj);
